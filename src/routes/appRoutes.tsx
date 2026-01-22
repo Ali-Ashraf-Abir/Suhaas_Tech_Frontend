@@ -8,59 +8,70 @@ import InviteUserPage from '../pages/InviteUserPage';
 import { ProtectedRoute } from './protectedRoute';
 import { AdminRoute } from './adminRoutes';
 import ManageInvitesPage from '../pages/ManageInvitePage';
+import UserManagementPage from '../pages/UserManagementPage';
 
 
 const AppRoutes: React.FC = () => {
-  const { isAuthenticated } = useAuth();
+    const { isAuthenticated } = useAuth();
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/login"
-          element={
-            isAuthenticated ? <Navigate to="/home" replace /> : <LoginPage />
-          }
-        />
-        <Route
-          path="/register/:token"
-          element={
-            isAuthenticated ? <Navigate to="/home" replace /> : <RegisterPage />
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <HomePage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/invite"
-          element={
-            <ProtectedRoute>
-              <AdminRoute>
-                <InviteUserPage />
-              </AdminRoute>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/invites/manage"
-          element={
-            <ProtectedRoute>
-              <AdminRoute>
-                <ManageInvitesPage />
-              </AdminRoute>
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="*" element={<Navigate to="/login" replace />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route
+                    path="/login"
+                    element={
+                        isAuthenticated ? <Navigate to="/home" replace /> : <LoginPage />
+                    }
+                />
+                <Route
+                    path="/register/:token"
+                    element={
+                        isAuthenticated ? <Navigate to="/home" replace /> : <RegisterPage />
+                    }
+                />
+                <Route
+                    path="/home"
+                    element={
+                        <ProtectedRoute>
+                            <HomePage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/invite"
+                    element={
+                        <ProtectedRoute>
+                            <AdminRoute>
+                                <InviteUserPage />
+                            </AdminRoute>
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/invites/manage"
+                    element={
+                        <ProtectedRoute>
+                            <AdminRoute>
+                                <ManageInvitesPage />
+                            </AdminRoute>
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/users/manage"
+                    element={
+                        <ProtectedRoute>
+                            <AdminRoute>
+                                <UserManagementPage />
+                            </AdminRoute>
+                        </ProtectedRoute>
+                    }
+                />
+                <Route path="/" element={<Navigate to="/login" replace />} />
+                <Route path="*" element={<Navigate to="/login" replace />} />
+            </Routes>
+        </BrowserRouter>
+    );
 };
 
 export default AppRoutes;

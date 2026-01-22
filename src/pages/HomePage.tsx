@@ -2,9 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   User,
-  Home,
-  BookOpen,
-  Settings,
   LogOut,
   UserPlus,
   Users,
@@ -125,6 +122,24 @@ const HomePage: React.FC = () => {
                 </h3>
                 <p className="text-gray-600 text-sm">
                   View and manage all pending invitations
+                </p>
+              </button>
+
+              <button
+                onClick={() => navigate('/users/manage')}
+                className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all cursor-pointer text-left group"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <Users className="w-10 h-10 text-green-600 group-hover:scale-110 transition-transform" />
+                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                    <Shield className="w-4 h-4 text-green-600" />
+                  </div>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Manage Users
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  View and manage all users
                 </p>
               </button>
             </>

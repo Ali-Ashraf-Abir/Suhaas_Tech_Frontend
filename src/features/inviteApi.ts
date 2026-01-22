@@ -1,11 +1,11 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithReauth } from '../../services/baseQuery';
+import { baseQueryWithReauth } from '../services/baseQuery';
 import {
   InviteRequest,
   InviteResponse,
   VerifyInviteResponse,
   Invite,
-} from '../../types/invite.types';
+} from '../types/invite.types';
 
 export const inviteAPI = createApi({
   reducerPath: 'inviteAPI',

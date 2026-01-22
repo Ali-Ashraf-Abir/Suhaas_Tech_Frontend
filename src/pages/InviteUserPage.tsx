@@ -11,7 +11,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 import { UserRole } from '../types/invite.types';
-import { useCreateInviteMutation } from '../features/auth/inviteApi';
+import { useCreateInviteMutation } from '../features/inviteApi';
 import { Select } from '../components/common/select';
 
 

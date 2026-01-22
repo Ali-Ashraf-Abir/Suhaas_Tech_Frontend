@@ -9,6 +9,7 @@ import { ProtectedRoute } from './protectedRoute';
 import { AdminRoute } from './adminRoutes';
 import ManageInvitesPage from '../pages/ManageInvitePage';
 import UserManagementPage from '../pages/UserManagementPage';
+import ProjectsPage from '../pages/ProjectManagementPage';
 
 
 const AppRoutes: React.FC = () => {
@@ -34,6 +35,14 @@ const AppRoutes: React.FC = () => {
                     element={
                         <ProtectedRoute>
                             <HomePage />
+                        </ProtectedRoute>
+                    }
+                />
+                                <Route
+                    path="/projects"
+                    element={
+                        <ProtectedRoute>
+                            <ProjectsPage />
                         </ProtectedRoute>
                     }
                 />

@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 import { UserRole } from '../types/invite.types';
-import { useGetInvitesQuery } from '../features/auth/inviteApi';
+import { useGetInvitesQuery } from '../features/inviteApi';
 
 const ManageInvitesPage: React.FC = () => {
   const navigate = useNavigate();

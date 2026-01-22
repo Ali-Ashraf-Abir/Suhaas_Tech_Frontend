@@ -125,23 +125,7 @@ const HomePage: React.FC = () => {
                                     View and manage all pending invitations
                                 </p>
                             </button>
-                            <button
-                                onClick={() => navigate('/projects')}
-                                className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all cursor-pointer text-left group border border-zinc-200"
-                            >
-                                <div className="flex items-center justify-between mb-3">
-                                    <Projector className="w-10 h-10 text-gray-600 group-hover:scale-110 transition-transform" />
-                                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                                        <Shield className="w-4 h-4 text-gray-600" />
-                                    </div>
-                                </div>
-                                <h3 className="text-lg font-semibold text-zinc-800 mb-2">
-                                    Manage Projects
-                                </h3>
-                                <p className="text-zinc-600 text-sm">
-                                    View and manage all pending invitations
-                                </p>
-                            </button>
+
                             <button
                                 onClick={() => navigate('/users/manage')}
                                 className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all cursor-pointer text-left group border border-zinc-200"
@@ -161,6 +145,24 @@ const HomePage: React.FC = () => {
                             </button>
                         </>
                     )}
+                    <button
+                        onClick={() => navigate('/projects')}
+                        className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all cursor-pointer text-left group border border-zinc-200"
+                    >
+                        <div className="flex items-center justify-between mb-3">
+                            <Projector className="w-10 h-10 text-gray-600 group-hover:scale-110 transition-transform" />
+                            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                                <Shield className="w-4 h-4 text-gray-600" />
+                            </div>
+                        </div>
+                        <h3 className="text-lg font-semibold text-zinc-800 mb-2">
+                            Manage Projects
+                        </h3>
+                        <p className="text-zinc-600 text-sm">
+                            View and manage all pending invitations
+                        </p>
+                    </button>
+
                 </div>
 
                 {/* Admin Notice */}

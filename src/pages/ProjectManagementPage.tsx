@@ -27,7 +27,7 @@ const ProjectsPage: React.FC = () => {
 
   const projects = projectsData?.data || [];
 
-  const filteredProjects = projects.filter((project:any) =>
+  const filteredProjects = projects.filter((project: any) =>
     project.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -39,8 +39,7 @@ const ProjectsPage: React.FC = () => {
 
     try {
       await createProject({ name, description }).unwrap();
-      e.currentTarget.reset();
-      setShowCreateModal(false);
+      setShowCreateModal(false); // Form resets automatically on unmount
     } catch (error) {
       console.error('Failed to create project:', error);
     }
@@ -133,7 +132,7 @@ const ProjectsPage: React.FC = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project:any) => (
+            {filteredProjects.map((project: any) => (
               <div
                 key={project.id}
                 className="bg-white rounded-xl shadow-md p-6 border border-zinc-200 hover:shadow-lg transition-shadow"

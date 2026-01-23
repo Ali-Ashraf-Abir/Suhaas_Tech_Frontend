@@ -23,13 +23,15 @@ export const baseQueryWithReauth: BaseQueryFn<
   unknown,
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-  let result = await baseQuery(args, api, extraOptions);
+  const result = await baseQuery(args, api, extraOptions);
 
-  // If we get a 401 error, try to refresh the token
-  if (result.error && result.error.status === 401) {
-    console.log('Token expired, attempting refresh...');
-    
-    // Try to get a new token
+  const isAuthEndpoint =
+    typeof args === 'object' &&
+    (args.url === '/auth/login' || args.url === '/auth/refresh');
+
+  if (result.error?.status === 401 && !isAuthEndpoint) {
+    console.log('Access token expired, attempting refresh...');
+
     const refreshResult = await baseQuery(
       { url: '/auth/refresh', method: 'POST' },
       api,
@@ -37,16 +39,19 @@ export const baseQueryWithReauth: BaseQueryFn<
     );
 
     if (refreshResult.data) {
-      // Store the new token
       const data = refreshResult.data as RefreshResponse;
-      api.dispatch(setCredentials({ accessToken: data.data.accessToken }));
-      
-      // Retry the original query with new token
-      result = await baseQuery(args, api, extraOptions);
+
+      api.dispatch(
+        setCredentials({
+          accessToken: data.data.accessToken,
+        })
+      );
+
+      // retry original request
+      return baseQuery(args, api, extraOptions);
     } else {
-      // Refresh failed, logout the user
       api.dispatch(logout());
-      window.location.href = '/login';
+
     }
   }
 

@@ -8,6 +8,7 @@ import { projectAPI } from '../features/projectApi';
 
 
 export const store = configureStore({
+  
   reducer: {
     auth: authReducer,
     [authAPI.reducerPath]: authAPI.reducer,
@@ -24,6 +25,7 @@ export const store = configureStore({
 });
 
 setupListeners(store.dispatch);
+
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

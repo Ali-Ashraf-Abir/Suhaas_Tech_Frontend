@@ -28,6 +28,12 @@ export const authAPI = createApi({
         method: 'POST',
       }),
     }),
+    logout : builder.mutation<{ success: boolean }, void>({
+      query: () => ({
+        url: '/auth/logout',        
+        method: 'POST',
+      }),
+    }),
   }),
 });
 
@@ -35,4 +41,5 @@ export const {
   useLoginMutation,
   useRegisterMutation,
   useRefreshMutation,
+  useLogoutMutation
 } = authAPI;

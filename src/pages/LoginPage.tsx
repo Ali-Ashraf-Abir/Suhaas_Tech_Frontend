@@ -6,6 +6,7 @@ import { useLoginMutation } from '../features/auth/authApi';
 import { setCredentials } from '../features/auth/authSlice';
 import { useAppDispatch } from '../app/hook';
 
+
 interface LoginFormData {
   email: string;
   password: string;
@@ -15,7 +16,6 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [login, { isLoading, isError, error }] = useLoginMutation();
-
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
     password: '',
@@ -56,8 +56,8 @@ const LoginPage: React.FC = () => {
       );
 
       // Navigate to home
-      navigate('/home');
-    } catch (err) {
+      // navigate('/home');
+    } catch (err:any) {
       console.error('Login failed:', err);
     }
   };
@@ -74,7 +74,7 @@ const LoginPage: React.FC = () => {
 
   const getErrorMessage = () => {
     if (error && 'data' in error) {
-      return (error.data as any)?.message || 'Login failed. Please try again.';
+      return (error.data as any)?.message || (error.data as any)?.error || 'Login failed. Please try again.';
     }
     return 'An unexpected error occurred';
   };
@@ -97,7 +97,6 @@ const LoginPage: React.FC = () => {
               <p className="text-sm font-medium">{getErrorMessage()}</p>
             </div>
           )}
-
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-1">
               <div className="relative">

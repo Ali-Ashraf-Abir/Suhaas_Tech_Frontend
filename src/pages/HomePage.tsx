@@ -13,13 +13,16 @@ import { useAuth } from '../hooks/useAuth';
 import { logout } from '../features/auth/authSlice';
 import { UserRole } from '../types/invite.types';
 import { useAppDispatch } from '../app/hook';
+import { useLogoutMutation } from '../features/auth/authApi';
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const { user } = useAuth();
 
-    const handleLogout = () => {
+    const [logoutRoute] = useLogoutMutation();
+    const handleLogout = async () => {
+        await logoutRoute().unwrap();
         dispatch(logout());
         navigate('/login');
     };

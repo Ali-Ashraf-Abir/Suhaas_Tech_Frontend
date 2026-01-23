@@ -38,7 +38,7 @@ const AppRoutes: React.FC = () => {
                         </ProtectedRoute>
                     }
                 />
-                                <Route
+                <Route
                     path="/projects"
                     element={
                         <ProtectedRoute>
